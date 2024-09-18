@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Length Frequency</title>
+</head>
+<body>
+    <script>
+        function sumOfTopTwoIntegers(...args) {
+            // kiem tra so luong tham so dau vao
+            if (args.length < 2) {
+                alert("Can it nhat 2 so nguyen");
+            } 
+
+            // set 2 gia tri max ban dau la -vo cung
+            let [max1, max2] = [-Infinity, -Infinity];
+
+            // tim 2 so lon nhat
+            for (const num of args) {
+                if (Number(num) > max1) {
+                    [max1, max2] = [Number(num), max1];
+                } else if (Number(num) > max2) {
+                    max2 = Number(num);
+                }
+            }
+
+            // tra ve tong 2 so lon nhat
+            return max1 + max2;
+        }
+
+        // nhap du lieu
+        const input = prompt('Nhap so nguyen cach nhau boi dau phay:');
+        
+        // xu li du lieu
+        if (input) {
+            const inputArray = input.split(',').map(item => item.trim());
+            const result = sumOfTopTwoIntegers(...inputArray);
+            alert('Output: '  + result);
+        }
+    </script>
+</body>
+</html>
+cd 
