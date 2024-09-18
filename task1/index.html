@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Length Frequency</title>
+</head>
+<body>
+    <script>
+        const stringLengthFrequency = (...args) => {
+           // chuyen mang thanh mang chua do dai cua cac phan tu thanh so nguyen
+            const lengths = args.map(s => s.length);
+
+           // tao object de luu tru so lan xuat hien cua cac do dai
+            const countObj = {};
+            let maxCount = 0;
+            let mostCommonNumber = null;
+            
+           // tim duoc so lan xuat hien nhieu nhat va so do dai tuong ung
+            lengths.forEach(num => {
+                const key = num.toString();
+                countObj[key] = (countObj[key] || 0) + 1;
+                if (countObj[key] > maxCount) {
+                    maxCount = countObj[key];
+                    mostCommonNumber = num;
+                }
+            });
+
+           // tra ve ket qua
+            const newArray = args.filter(s => s.length === mostCommonNumber);
+            return newArray;
+        }
+
+        // nhap du lieu
+        const input = prompt('Nhap chuoi cach nhau boi dau phay:');
+        
+        // xu li du lieu
+        if (input) {
+            const inputArray = input.split(',').map(item => item.trim());
+            const result = stringLengthFrequency(...inputArray);
+            alert('Output: ' + result.join(', '));
+        }
+    </script>
+</body>
+</html>
